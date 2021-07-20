@@ -44,7 +44,7 @@ export function TodoInput({ addTask, ...rest }: TodoInputProps) {
 
 const styles = StyleSheet.create({
   inputContainer: {
-    backgroundColor: '#F5F4F8',
+    backgroundColor: '#FFFFFF',
     borderRadius: 5,
     marginTop: -25,
     marginHorizontal: 40,
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    backgroundColor: '#F5F4F8',
+    backgroundColor: '#FFFFFF',
     paddingLeft: 12,
     borderTopLeftRadius: 5,
     borderBottomLeftRadius: 5,
@@ -72,12 +72,15 @@ const styles = StyleSheet.create({
     elevation: 5
   },
   addButton: {
-    backgroundColor: '#3FAD27',
+    backgroundColor: '#EBEBEB',
     height: 50,
     paddingHorizontal: 16,
     justifyContent: 'center',
     alignItems: 'center',
     borderTopRightRadius: 5,
     borderBottomRightRadius: 5,
+    borderLeftWidth: 1,
+    borderLeftColor: '#EBEBEB'
+  
   },
 });

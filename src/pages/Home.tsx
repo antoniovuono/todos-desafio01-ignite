@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Alert } from "react-native";
 
 import { Header } from '../components/Header';
 import { MyTasksList } from '../components/MyTasksList';
@@ -22,6 +23,8 @@ export function Home() {
         };
 
         setTasks(oldState => [...oldState, data]);
+      } else {
+        Alert.alert('It is not possible to add an untitled task...');
       }
   }
   function handleMarkTaskAsDone(id: number) {
@@ -34,7 +37,7 @@ export function Home() {
   }
 
   function handleRemoveTask(id: number) {
-    setTasks(oldState => oldState.filter(task => task.id !== id));
+   setTasks(oldState => oldState.filter(task => task.id !== id));
   }
 
   return (
