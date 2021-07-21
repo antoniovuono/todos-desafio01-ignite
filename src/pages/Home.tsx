@@ -15,6 +15,17 @@ export function Home() {
   const [tasks, setTasks] = useState<Task[]>([]);
 
   function handleAddTask(newTaskTitle: string) {
+
+    const taskAlreadyExists = tasks.find(task => task.title === newTaskTitle);
+
+      if (taskAlreadyExists) {
+        Alert.alert(
+          'Tarefa já cadastrada', 
+          'Você não pode cadastrar uma task com o mesmo nome'
+        );
+        return
+      }
+
       if(newTaskTitle !== "") {
         const data = {
           id: new Date().getTime(),
@@ -24,8 +35,14 @@ export function Home() {
 
         setTasks(oldState => [...oldState, data]);
       } else {
-        Alert.alert('It is not possible to add an untitled task...');
+        Alert.alert(
+          'Não foi possível adicionar sua tarefa',
+          'Não é possível adicionar uma tarefa sem um título'
+          );
       }
+
+    
+
   }
   function handleMarkTaskAsDone(id: number) {
      const updatedTasks = tasks.map(
@@ -37,7 +54,23 @@ export function Home() {
   }
 
   function handleRemoveTask(id: number) {
-   setTasks(oldState => oldState.filter(task => task.id !== id));
+   
+    Alert.alert(
+      'Remover item',
+      'Você tem certeza que deseja remover esse item?',
+      [
+        {
+          text: 'Não',
+          style: 'cancel',
+        },
+        {
+          text: 'Sim',
+          onPress: () =>  setTasks(oldState => oldState.filter(task => task.id !==id)),
+          style: 'destructive'
+        }
+      ],
+    )
+
   }
 
   return (
