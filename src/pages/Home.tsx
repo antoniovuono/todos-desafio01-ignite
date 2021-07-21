@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Alert } from "react-native";
+import { Alert, StyleSheet, View } from "react-native";
 
 import { Header } from '../components/Header';
 import { MyTasksList } from '../components/MyTasksList';
@@ -42,7 +42,8 @@ export function Home() {
 
   return (
     <>
-      <Header />
+    <View style={styles.container}>
+      <Header tasksCounter={tasks.length} />
 
       <TodoInput addTask={handleAddTask} />
 
@@ -51,6 +52,14 @@ export function Home() {
         onPress={handleMarkTaskAsDone} 
         onLongPress={handleRemoveTask} 
       />
+      </View>
     </>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#EBEBEB'
+  }
+})

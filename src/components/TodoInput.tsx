@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Image, Platform, StyleSheet, TextInput, TouchableOpacity, View, TouchableOpacityProps } from 'react-native';
 
-import checkIcon from '../assets/icons/Check.png';
+import checkIcon from '../assets/icons/Arrow.png';
 
 interface TodoInputProps extends TouchableOpacityProps {
   addTask: (task: string) => void;
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     elevation: 5
   },
   addButton: {
-    backgroundColor: '#EBEBEB',
+    backgroundColor: '#FFFFFF',
     height: 50,
     paddingHorizontal: 16,
     justifyContent: 'center',

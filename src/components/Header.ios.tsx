@@ -1,15 +1,23 @@
-import React from 'react';
-import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, SafeAreaView, Image } from 'react-native';
 
-export function Header() {
+import logoImg from '../assets/icons/to.do.png';
+
+interface HeaderProps {
+  tasksCounter: number;
+}
+
+export function Header({ tasksCounter }: HeaderProps) {
+ const taskCounterText = tasksCounter === 1 ? 'tarefa' : 'tarefas';
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerText}>to.</Text>
-        <Text style={[styles.headerText, { fontFamily: 'Poppins-SemiBold' }]}>do</Text>
+        <Image style={styles.imgLogo} source={logoImg} />
 
         <Text style={styles.tasksText}>Você tem</Text>
-        <Text style={[styles.taskState, {fontWeight: 'bold'}]}>3 tarefas</Text>
+        <Text style={[styles.taskState, {fontWeight: 'bold'}]}>{tasksCounter} {taskCounterText}</Text>
+       
       </View>
     </SafeAreaView>
   )
@@ -18,34 +26,32 @@ export function Header() {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#8257E5',
+    alignItems: 'center',
+    
   },
   header: {
-    paddingBottom: 45,
+    paddingBottom: 55,
     backgroundColor: '#8257E5',
     flexDirection: 'row',
-    marginHorizontal: 40,
-    
+    marginVertical: 10,
 
   },
-  headerText: {
-    fontSize: 28,
-    color: '#FFF',
-    fontFamily: 'Poppins-SemiBold',
-    alignSelf: 'center',
-   
-  
+  imgLogo: {
+    marginTop: 15 
   },
   tasksText: {
     color: '#FFF',
     fontSize: 15,
     alignSelf: 'center',
-    marginLeft: 100
+    marginLeft: 100,
+    marginTop: 15   
     
   },
   taskState: {
     color: '#FFF',
     fontSize: 15,
     alignSelf: 'center',
-    marginLeft: 5
+    marginLeft: 5,
+    marginTop: 15
   }
 });
